@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>SAT School Scores</title>
-  </head>
-  <body>  
+  
+{% extends "layout.html" %}
+
+{% set active_page = "home" %}
+
+{% block title %}About this Database{% endblock %}
+
+{% block content %}
+
     <h1>About this Database</h1>
     <p>
       This dataset consists of average math and verbal SAT score acrosss the United States 
@@ -29,5 +32,5 @@
       number of test takeres per gender.  Finally, the data set has the number of males and 
       females that scores within six different ranges for both math and verbal.
     </p>
-   </body>
-</html>
+
+{% endblock %}
