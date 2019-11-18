@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-	<link rel="interactive" href="{{url_for('static', filename='myscript.js')}}">
   <title>{% block title %}{% endblock %} - SAT School Scores</title>
   
   </head>
@@ -24,5 +23,6 @@
     {% block content %}{% endblock %}
     
     <script rel="interactive" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="interactive" href="{{url_for('static', filename='myscript.js')}}">
   </body>
 </html>
