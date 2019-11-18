@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+	<link rel="interactive" href="{{url_for('static', filename='myscript.js')}}">
   <title>{% block title %}{% endblock %} - SAT School Scores</title>
   
   </head>
@@ -16,13 +17,12 @@
      </button>
      <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="nav navbar-nav">
-            <li class="nav-item {% if active_page == "home" %} class="active"{% endif %}"><a href="/">About the Database</a></li>
+            <li class="nav-item" {% if active_page == "home" %} class="active"{% endif %}><a href="/">About the Database</a></li>
           </ul>
       </div>
     </nav>
     {% block content %}{% endblock %}
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script rel="interactive" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </body>
 </html>
