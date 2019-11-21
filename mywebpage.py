@@ -4,21 +4,29 @@ import json
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/aboutData")
 def render_main():
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
     return render_template('home.html')
     
-@app.route("/page1")
-def render_page1():
-    return render_template('page1.html')
+@app.route("/stateDemographics")
+def render_state_dempgraphics():
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+    return render_template('stateDemographics.html')
     
-@app.route("/page2")
-def render_page2():
-    return render_template('page2.html')
+@app.route("/income&gender")
+def render_income_and_gender():
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+    return render_template('income&gender.html')
     
-@app.route("/page3")
-def render_page3():
-    return render_template('page3.html')
+@app.route("/academics&GPA")
+def render_academics_and_GPA():
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+    return render_template('academics&GPA.html')
 
 if __name__=="__main__":
     app.run(debug=False)
