@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route("/aboutData")
+@app.route("/")
 def render_main():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
