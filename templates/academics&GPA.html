@@ -6,39 +6,55 @@
 
 {% block content %}
     <h1>Academics and GPA on Scores</h1>
-	<script type="text/javascript">
-	window.onload = function() {
+<script>
+window.onload = function () {
 
-	var options = {
-		exportEnabled: true,
-		animationEnabled: true,
-		title:{
-			text: "Accounting"
-		},
-		legend:{
-			horizontalAlign: "right",
-			verticalAlign: "center"
-		},
-		data: [{
-			type: "pie",
-			showInLegend: true,
-			toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
-			indexLabel: "{name}",
-			legendText: "{name} (#percent%)",
-			indexLabelPlacement: "inside",
-			dataPoints: [
-				{ y: 6566.4, name: "Housing" },
-				{ y: 2599.2, name: "Food" },
-				{ y: 1231.2, name: "Fun" },
-				{ y: 1368, name: "Clothes" },
-				{ y: 684, name: "Others"},
-				{ y: 1231.2, name: "Utilities" }
-			]
-		}]
-	};
-	$("#chartContainer").CanvasJSChart(options);
+var options = {
+	animationEnabled: true,
+	title:{
+		text: "Average Grade on Math and Verbal Scores"   
+	},
+	axisY:{
+		title:"Math and Verbal Scores"
+	},
+	toolTip: {
+		shared: true,
+		reversed: true
+	},
+	data: [{
+		type: "stackedColumn",
+		name: "Math",
+		showInLegend: "true",
+		yValueFormatString: "###",
+		dataPoints: [
+			{ y: 622 , label: "A+" },
+			{ y: 600, label: "A" },
+			{ y: 569, label: "A-" },
+			{ y: 514, label: "B" },
+			{ y: 436, label: "C" },
+			{ y: 0, label: "D or lower" },
+			{ y: 0, label: "no response" }
+		]
+	},
+	{
+		type: "stackedColumn",
+		name: "Verbal",
+		showInLegend: "true",
+		yValueFormatString: "###",
+		dataPoints: [
+			{ y: 623 , label: "A+" },
+			{ y: 608, label: "A" },
+			{ y: 575, label: "A-" },
+			{ y: 525, label: "B" },
+			{ y: 451, label: "C" },
+			{ y: 0, label: "D or lower" },
+			{ y: 0, label: "no response" }
+		]
+	}]
+};
 
-	}
-	</script>
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+$("#GPABarGraph").CanvasJSChart(options);
+}
+</script>
+	<div id="GPABarGraph" style="height: 300px; width: 100%;"></div>
 {% endblock %}
