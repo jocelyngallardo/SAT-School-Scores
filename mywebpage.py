@@ -26,6 +26,10 @@ def render_income_and_gender():
 def render_academics_and_GPA():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
+        for states in satData:
+            if states['Code'] = ['AL'] and state['Year'] = ['2015']:
+                math = states['GPA']['Math']
+                verabal = states['GPA']['Verbal']
     return render_template('academics&GPA.html')
 
 if __name__=="__main__":
