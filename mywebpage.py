@@ -27,9 +27,12 @@ def render_academics_and_GPA():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
         for states in satData:
-            if states['Code'] = ['AL'] and state['Year'] = ['2015']:
-                math = states['GPA']['Math']
-                verabal = states['GPA']['Verbal']
+            if states['State']['Code'] == 'AL' and state['Year'] == '2015':
+                for grade in states['GPA']:
+                    letter = ['GPA'][0]
+                    math = 'Math'
+                return '{ y: ' + math + ', label: ' + '"'letter"'" + ' },'  
+                    
     return render_template('academics&GPA.html')
 
 if __name__=="__main__":
