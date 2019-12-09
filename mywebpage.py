@@ -26,14 +26,19 @@ def render_income_and_gender():
 def render_academics_and_GPA():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
-        data = ''
+        dataMath = ''
+        dataVerbal = ''
+        listOfStates = []
         for states in satData:
-            print('hi')
-            if states['State']['Code'] == 'AL' and states['Year'] == 2015:
-                for grade in states['GPA']:
-                        data += '{ y: ' + str(states['GPA'][grade]['Math']) + ', label: ' + '"' + grade + "'" + ' },'
-        print(data)
-    return render_template('academics&GPA.html', mathScore = data)
+            if states['State']['Name'] not in listOfStates and states['Year'] == 2015:
+                listOfStates.append(states['State']['Name'])
+                print(listOfStates)
+                for grade in listOfStates[0]['GPA']:
+                        dataMath += Markup('{ y: ' + str(listOfStates[0]['GPA'][grade]['Math']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
+                        dataVerbal += Markup('{ y: ' + str(listOfStates[0]['GPA'][grade]['Verbal']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
+        print(dataMath.rstrip(','))
+        print(dataVerbal.rstrip(','))
+    return render_template('academics&GPA.html', mathScore = dataMath, verbalScore = dataVerbal, listOfStates = state)
 
 if __name__=="__main__":
     app.run(debug=False)
