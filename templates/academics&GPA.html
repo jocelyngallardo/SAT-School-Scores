@@ -46,4 +46,14 @@ $("#GPABarGraph").CanvasJSChart(options);
 }
 </script>
 	<div id="GPABarGraph" style="height: 300px; width: 100%;"></div>
+	
+<body>
+	<form action="/academics&GPAreply">
+		<select name="states">
+		  {{state}}
+		</select>
+		<input type="submit" value="change the state">
+	</form>
+</body>
+	
 {% endblock %}
