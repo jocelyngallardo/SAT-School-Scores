@@ -25,35 +25,13 @@ def render_income_and_gender():
     
 @app.route("/academics&GPA")
 def render_academics_and_GPA():
-    with open('school_scores.json') as sat_data:
-        satData = json.load(sat_data)
-        dataMath = ''
-        dataVerbal = ''
-        listOfStates = []
-        for states in satData:
-            if states['State']['Code'] =='AL'and states['Year'] == 2015:
-                for grade in states['GPA']:
-                        dataMath += Markup('{ y: ' + str(states['GPA'][grade]['Math']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
-                        dataVerbal += Markup('{ y: ' + str(states['GPA'][grade]['Verbal']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
-        print(dataMath.rstrip(','))
-        print(dataVerbal.rstrip(','))
-    return render_template('academics&GPA.html', mathScore = dataMath, verbalScore = dataVerbal, state = get_states())
+    scores = get_scores('Alabama')
+    return render_template('academics&GPA.html', mathScore = scores[0], verbalScore = scores[1], state = get_states(), stateName = 'Alabama')
     
 @app.route("/academics&GPAreply")
 def render_reply():
-    with open('school_scores.json') as sat_data:
-        satData = json.load(sat_data)
-        dataMath = ''
-        dataVerbal = ''
-        listOfStates = []
-        for states in satData:
-            if states['State']['Code'] =='AL'and states['Year'] == 2015:
-                for grade in states['GPA']:
-                        dataMath += Markup('{ y: ' + str(states['GPA'][grade]['Math']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
-                        dataVerbal += Markup('{ y: ' + str(states['GPA'][grade]['Verbal']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
-        print(dataMath.rstrip(','))
-        print(dataVerbal.rstrip(','))
-    return render_template('academics&GPA.html', mathScore = dataMath, verbalScore = dataVerbal, state = request.args(state))
+    scores = get_scores(request.args['states'])
+    return render_template('academics&GPA.html', mathScore = scores[0], verbalScore = scores[1], state = get_states_reply(request.args['states']), stateName = request.args['states'])
     
 def get_states():
     with open('school_scores.json') as sat_data:
@@ -66,7 +44,33 @@ def get_states():
         for data in listOfStates:
             option = option + Markup("<option value=\"" + data + "\">" + data + "</option>")
     return option
-        
+      
+def get_states_reply(state):
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+        listOfStates = []
+        option = ''
+        for states in satData:
+            if states['State']['Name'] not in listOfStates and states['Year'] == 2015:
+                listOfStates.append(states['State']['Name'])
+        for data in listOfStates:
+            option = option + Markup("<option value=\"" + data + "\">" + data + "</option>")
+    return option     
+ 
+def get_scores(whichState):
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+        dataMath = ''
+        dataVerbal = ''
+        listOfStates = []
+        for states in satData:
+            if states['State']['Name'] == whichState and states['Year'] == 2015:
+                for grade in states['GPA']:
+                        dataMath += Markup('{ y: ' + str(states['GPA'][grade]['Math']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
+                        dataVerbal += Markup('{ y: ' + str(states['GPA'][grade]['Verbal']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
+        print(dataMath.rstrip(','))
+        print(dataVerbal.rstrip(','))
+    return[dataMath, dataVerbal]
         
 if __name__=="__main__":
     app.run(debug=True)
