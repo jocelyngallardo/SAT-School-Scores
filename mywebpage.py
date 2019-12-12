@@ -27,7 +27,8 @@ def render_income_and_gender():
 def render_academics_and_GPA():
     scores = get_scores('Alabama')
     return render_template('academics&GPA.html', mathScore = scores[0], verbalScore = scores[1], state = get_states(), stateName = 'Alabama')
-    
+ 
+#start of code for academics&GPA 
 @app.route("/academics&GPAreply")
 def render_reply():
     scores = get_scores(request.args['states'])
@@ -71,6 +72,7 @@ def get_scores(whichState):
         print(dataMath.rstrip(','))
         print(dataVerbal.rstrip(','))
     return[dataMath, dataVerbal]
-        
+#end of code for academics&GPA        
+
 if __name__=="__main__":
     app.run(debug=True)
