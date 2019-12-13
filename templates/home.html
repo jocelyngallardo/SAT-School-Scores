@@ -8,13 +8,16 @@
 {% block content %}
 
     <h1>About the Dataset</h1>
-    <p>
+	
+	<img id ="satImage" src="sat-image.jpg" alt="SAT Image">
+	
+    <p class="margin">
       This dataset consists of average math and verbal SAT score acrosss the United States 
       collected from the year 2005.  This data is broken down into various different 
       catagories, including, family income, gender, state, average GPA by subject, and 
       average letter grade.
     </p>
-    <p>
+    <p class="margin">
       For each state, the total number of test takers and the average math and verbal scores 
       state wide.  Then the average GPA per subject is listed, along with the average number of 
       years that students took the course.  The subjects include Arts/Music, English, Forgien 
@@ -23,7 +26,7 @@
       within each range is the number of test takers in that income bracket and the average math 
       and verbal scores.
     </p>
-    <p>
+    <p class="margin">
       After this is the GPA, represented as the average letter grade.  The grades range from A+ 
       to D or lower to no response (no response being that the student did not provide thier 
       average letter grade).  Within each letter grade is the average math and verbal scores as 
@@ -32,6 +35,6 @@
       number of test takeres per gender.  Finally, the data set has the number of males and 
       females that scores within six different ranges for both math and verbal.
     </p>
-    <p>All infortmation and data was gathered from the <a href=https://corgis-edu.github.io/corgis/json/school_scores/>CORGIS Datasets Project</a>.</p>
+    <p class="margin">All infortmation and data was gathered from the <a href=https://corgis-edu.github.io/corgis/json/school_scores/>CORGIS Datasets Project</a>.</p>
 
 {% endblock %}

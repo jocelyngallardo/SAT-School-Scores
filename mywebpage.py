@@ -67,11 +67,9 @@ def get_scores(whichState):
         for states in satData:
             if states['State']['Name'] == whichState and states['Year'] == 2015:
                 for grade in states['GPA']:
-                        dataMath += Markup('{ y: ' + str(states['GPA'][grade]['Math']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
-                        dataVerbal += Markup('{ y: ' + str(states['GPA'][grade]['Verbal']) + ', label: ' + '"' + grade + '"' + ' }' + ',')
-        print(dataMath.rstrip(','))
-        print(dataVerbal.rstrip(','))
-    return[dataMath, dataVerbal]
+                        dataMath += Markup('{ y: ' + str(states['GPA'][grade]['Math']) + ', label: ' + '"' + grade + '"' + ' }' + ', ')
+                        dataVerbal += Markup('{ y: ' + str(states['GPA'][grade]['Verbal']) + ', label: ' + '"' + grade + '"' + ' }' + ', ')
+    return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
 #end of code for academics&GPA        
 
 if __name__=="__main__":

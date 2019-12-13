@@ -6,7 +6,12 @@
 
 {% block content %}
     <h1>Academics and GPA on Scores</h1>
+<body>
+	<p id='description'>
+		This graph represents the average math and verbal scores during the year 2015 in a given state for the average letter grade students recorded on their SAT.
+	</p>
 	
+</body>
 <script>
 window.onload = function () {
 
@@ -51,7 +56,10 @@ $("#GPABarGraph").CanvasJSChart(options);
 	
 <body>
 	<form action="/academics&GPAreply">
-		<select name="states">
+	<p class="margin">
+		Use the the navigator below to change which state's data is represented in the graph.
+	</p>
+		<select class="margin" name="states">
 		  {{state}}
 		</select>
 		<input type="submit" value="change the state">
