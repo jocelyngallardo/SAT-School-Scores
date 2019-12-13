@@ -75,4 +75,4 @@ def get_scores(whichState):
 #end of code for academics&GPA        
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=False)
