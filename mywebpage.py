@@ -23,12 +23,12 @@ def render_income_and_gender():
         satData = json.load(sat_data)
     return render_template('income&gender.html')
     
+#start of code for academics&GPA  
 @app.route("/academics&GPA")
 def render_academics_and_GPA():
     scores = get_scores('Alabama')
     return render_template('academics&GPA.html', mathScore = scores[0], verbalScore = scores[1], state = get_states(), stateName = 'Alabama')
  
-#start of code for academics&GPA 
 @app.route("/academics&GPAreply")
 def render_reply():
     scores = get_scores(request.args['states'])
