@@ -64,8 +64,32 @@ $("#malePieChart").CanvasJSChart(options);
 
 }
 </script>
+
 <div id="femalePieChart" style="height: 370px; width: 100%;"></div> 
-<div id="malePieChart" style="height: 370px; width: 100%;"></div> 
+<body>
+	<form action="/income&genderReply">
+	<p class="margin">
+		Use the the navigator below to change which state's data is represented in the graph.
+	</p>
+		<select class="margin" name="states">
+		  {{state}}
+		</select>
+		<input type="submit" value="change the state">
+	</form>
+</body>
+
+<div id="malePieChart" style="height: 370px; width: 100%;"></div>
+<body>
+	<form action="/income&genderReply">
+	<p class="margin">
+		Use the the navigator below to change which state's data is represented in the graph.
+	</p>
+		<select class="margin" name="states">
+		  {{state}}
+		</select>
+		<input type="submit" value="change the state">
+	</form>
+</body>
  
 </form>
 

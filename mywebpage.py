@@ -23,6 +23,18 @@ def render_income_and_gender():
         satData = json.load(sat_data)
     return render_template('income&gender.html')
     
+def get_gender_scores():
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+        male = ''
+        female = ''
+        listOfStates = []
+        for states in satData:
+            if states['State']['Name'] == whichState and states['Year'] == 2015:
+                for gender in states['Gender']:
+                        female += Markup('{ y: ' + str(states['GPA']['Female']) + ', label: ' + '"' + grade + '"' + ' }' + ', ')
+                        male += Markup('{ y: ' + str(states['GPA']['male']) + ', label: ' + '"' + grade + '"' + ' }' + ', ')
+    return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
 #start of code for academics&GPA  
 @app.route("/academics&GPA")
 def render_academics_and_GPA():
