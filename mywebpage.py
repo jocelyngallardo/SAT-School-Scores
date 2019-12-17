@@ -42,7 +42,7 @@ def get_female_scores(whichState):
                 for female in states['Gender']:
                         femaleMath += Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Female']['Math'])' }' + ', ')
                         femaleVerbal += Markup('{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Female']['Verbal'])' }' + ', ')
-    return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
+    return[femaleMath.rstrip(', '), femaleVerbal.rstrip(', ')]
 
 def get_female_scores(whichState):
     with open('school_scores.json') as sat_data:
@@ -55,7 +55,7 @@ def get_female_scores(whichState):
                 for male in states['Gender']:
                         maleMath += Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Male']['Math'])' }' + ', ')
                         maleVerbal += Markup('{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Male']['Verbal'])' }' + ', ')
-    return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
+    return[maleMath.rstrip(', '), maleVerbal.rstrip(', ')]
 
 #start of code for academics&GPA  
 @app.route("/academics&GPA")
