@@ -37,7 +37,7 @@ def get_income_scores(whichState):
                 for income in states['Family Income']:
                         math += Markup('{ y: ' + str(states['Family Income'][income]['Math']) + ', label: ' + '"' + income + '"' + ' }' + ', ')
                         verbal += Markup('{ y: ' + str(states['Family Income'][income]['Verbal']) + ', label: ' + '"' + income + '"' + ' }' + ', ')
-    return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
+    return[math.rstrip(', '), verbal.rstrip(', ')]
 #end of code for familyIncome
 
 #start of code for gender
