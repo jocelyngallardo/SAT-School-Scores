@@ -34,7 +34,7 @@ def get_income_scores(whichState):
         listOfStates = []
         for states in satData:
             if states['State']['Name'] == whichState and states['Year'] == 2015:
-                for income in states['GPA']:
+                for income in states['Family Income']:
                         math += Markup('{ y: ' + str(states['Family Income'][income]['Math']) + ', label: ' + '"' + income + '"' + ' }' + ', ')
                         verbal += Markup('{ y: ' + str(states['Family Income'][income]['Verbal']) + ', label: ' + '"' + income + '"' + ' }' + ', ')
     return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
