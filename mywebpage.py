@@ -23,7 +23,7 @@ def render_income_and_gender():
         satData = json.load(sat_data)
         femaleScores = get_female_scores('Alabama')
         maleScores = get_male_scores('Alabama')
-    return render_template('income&gender.html', femaleScore = femaleScores[0], maleScore = maleScores[1], state = get_states(), stateName = 'Alabama')
+    return render_template('income&gender.html', femaleScore = femaleScores[0], maleVerbale = maleScores[1], state = get_states(), stateName = 'Alabama')
 
 @app.route("/income&genderReply")
 def render_income_and_gender():
