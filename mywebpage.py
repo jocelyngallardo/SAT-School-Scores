@@ -17,7 +17,7 @@ def render_family_income():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
         incomeScores = get_income_scores('Alabama')
-    return render_template('familyIncome.html', mathScore = incomeScores[0], verbalScores = incomeScore[1], state = get_states(), stateName = 'Alabama')
+    return render_template('familyIncome.html', mathScore = incomeScores[0], verbalScores = incomeScores[1], state = get_states(), stateName = 'Alabama')
 
 @app.route("/familyIncomeReply")
 def render_family_income_reply():
