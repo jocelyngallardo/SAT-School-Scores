@@ -46,7 +46,7 @@ def get_female_scores(whichState):
                         femaleVerbal += Markup('{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Female']['Verbal'])' }' + ', ')
     return[femaleMath.rstrip(', '), femaleVerbal.rstrip(', ')]
 
-def get_female_scores(whichState):
+def get_male_scores(whichState):
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
         maleMath = ''
