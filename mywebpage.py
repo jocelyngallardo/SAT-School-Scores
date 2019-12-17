@@ -42,8 +42,8 @@ def get_female_scores(whichState):
         for states in satData:
             if states['State']['Name'] == whichState and states['Year'] == 2015:
                 for female in states['Gender']:
-                        femaleMath += Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Female']['Math'])' }' + ', ')
-                        femaleVerbal += Markup('{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Female']['Verbal'])' }' + ', ')
+                        femaleMath += Markup('{ label: ' + '"Math"' + ', y: ' + str(states['Gender']['Female']['Math']) + ' }' + ', ')
+                        femaleVerbal += Markup('{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Female']['Verbal']) + ' }' + ', ')
     return[femaleMath.rstrip(', '), femaleVerbal.rstrip(', ')]
 
 def get_male_scores(whichState):
@@ -55,8 +55,8 @@ def get_male_scores(whichState):
         for states in satData:
             if states['State']['Name'] == whichState and states['Year'] == 2015:
                 for male in states['Gender']:
-                        maleMath += Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Male']['Math'])' }' + ', ')
-                        maleVerbal += Markup('{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Male']['Verbal'])' }' + ', ')
+                        maleMath += Markup('{ label: ' + '"Math"' + ', y: ' + str(states['Gender']['Male']['Math']) + ' }' + ', ')
+                        maleVerbal += Markup('{ label: ' + '"Verbal"' + ', y: ' + str(states['Gender']['Male']['Verbal']) + ' }' + ', ')
     return[maleMath.rstrip(', '), maleVerbal.rstrip(', ')]
 
 #start of code for academics&GPA  
