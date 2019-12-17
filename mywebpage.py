@@ -22,6 +22,7 @@ def render_income_and_gender():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
         scores = get_female_scores('Alabama')
+        scores = get_male_scores('Alabama')
     return render_template('income&gender.html')
 
 @app.route("/income&genderReply")
@@ -29,6 +30,7 @@ def render_income_and_gender():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
         scores = get_female_scores(request.args[states])
+        scores = get_male_scores(request.args[states])
     return render_template('income&gender.html')
     
 def get_female_scores(whichState):
