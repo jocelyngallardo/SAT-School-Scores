@@ -10,13 +10,37 @@ def render_main():
         satData = json.load(sat_data)
         print(get_states)
     return render_template('home.html')
-    
+
+#start of code for familyIncome
 @app.route("/familyIncome")
 def render_family_income():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
-    return render_template('familyIncome.html')
-    
+        incomeScores = get_income_scores('Alabama')
+    return render_template('familyIncome.html', mathScore = incomeScores[0], verbalScores = incomeScore[1], state = get_states(), stateName = 'Alabama')
+
+@app.route("/familyIncomeReply")
+def render_family_income_reply():
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+        incomeScores = get_income_scores(request.args['states'])
+    return render_template('familyIncome.html', mathScore = incomeScores[0], verbalScore = incomeScore[1], state = get_states_reply(request.args['states']), stateName = request.args['states'])
+
+def get_income_scores(whichState):
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+        math = ''
+        verbal = ''
+        listOfStates = []
+        for states in satData:
+            if states['State']['Name'] == whichState and states['Year'] == 2015:
+                for income in states['GPA']:
+                        math += Markup('{ y: ' + str(states['Family Income'][income]['Math']) + ', label: ' + '"' + income + '"' + ' }' + ', ')
+                        verbal += Markup('{ y: ' + str(states['Family Income'][income]['Verbal']) + ', label: ' + '"' + income + '"' + ' }' + ', ')
+    return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
+#end of code for familyIncome
+
+#start of code for gender
 @app.route("/gender")
 def render_gender():
     with open('school_scores.json') as sat_data:
@@ -45,6 +69,7 @@ def get_gender_scores(whichState):
                         male = Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Male']['Math']) + ' }' + ', ' + 
                                '{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Male']['Verbal']) + ' }')
     return[female, male]
+#end of code for gender
 
 #start of code for academics&GPA  
 @app.route("/academics&GPA")
