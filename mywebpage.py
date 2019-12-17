@@ -17,19 +17,19 @@ def render_state_dempgraphics():
         satData = json.load(sat_data)
     return render_template('stateDemographics.html')
     
-@app.route("/income&gender")
-def render_income_and_gender():
+@app.route("/gender")
+def render_gender():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
         genderScores = get_gender_scores('Alabama')
-    return render_template('income&gender.html', femaleScore = genderScores[0], maleScore = genderScores[1], state = get_states(), stateName = 'Alabama')
+    return render_template('gender.html', femaleScore = genderScores[0], maleScore = genderScores[1], state = get_states(), stateName = 'Alabama')
 
-@app.route("/income&genderReply")
-def render_income_and_gender():
+@app.route("/genderReply")
+def render_gender_reply():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
-        genderScores = get_gender_scores(request.args[states])
-    return render_template('income&gender.html', femaleScore = genderScores[0], maleScore = genderScores[1], state = get_states_reply(request.args['states']), stateName = request.args['states'])
+        genderScores = get_gender_scores(request.args['states'])
+    return render_template('gender.html', femaleScore = genderScores[0], maleScore = genderScores[1], state = get_states_reply(request.args['states']), stateName = request.args['states'])
 
 def get_gender_scores(whichState):
     with open('school_scores.json') as sat_data:
@@ -40,9 +40,11 @@ def get_gender_scores(whichState):
         for states in satData:
             if states['State']['Name'] == whichState and states['Year'] == 2015:
                 for score in states['Gender']:
-                        female += Markup('{ label: ' + '"' + str(states['Gender']['Female']) + '"' + ', y: ' + str(states['Gender']['Female']['Math'][score]) + ' }' + ', ')
-                        male += Markup('{ label: ' + '"' + str(states['Gender']['Male']) + '"' + ', y: ' + str(states['Gender']['Male']['Math'][score]) + ' }' + ', ')
-    return[female.rstrip(', '), male.rstrip(', ')]
+                        female = Markup('{ label: ' + '"' + 'Female' + '"' + ', y: ' + str(states['Gender']['Female']['Math']) + ' }' + ', ' + 
+                                '{ label: ' + '"' + 'Female' + '"' + ', y: ' + str(states['Gender']['Female']['Verbal']) + ' }')
+                        male = Markup('{ label: ' + '"' + 'Male' + '"' + ', y: ' + str(states['Gender']['Male']['Math']) + ' }' + ', ' + 
+                               '{ label: ' + '"' + 'Male' + '"' + ', y: ' + str(states['Gender']['Male']['Verbal']) + ' }')
+    return[female, male]
 
 '''    
 def get_female_scores(whichState):
