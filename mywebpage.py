@@ -21,20 +21,42 @@ def render_state_dempgraphics():
 def render_income_and_gender():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
+        scores = get_female_scores('Alabama')
     return render_template('income&gender.html')
-    
-def get_gender_scores():
+
+@app.route("/income&genderReply")
+def render_income_and_gender():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
-        male = ''
-        female = ''
+        scores = get_female_scores(request.args[states])
+    return render_template('income&gender.html')
+    
+def get_female_scores(whichState):
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+        femaleMath = ''
+        femaleVerbal = ''
         listOfStates = []
         for states in satData:
             if states['State']['Name'] == whichState and states['Year'] == 2015:
-                for gender in states['Gender']:
-                        female += Markup('{ y: ' + str(states['GPA']['Female']) + ', label: ' + '"' + grade + '"' + ' }' + ', ')
-                        male += Markup('{ y: ' + str(states['GPA']['male']) + ', label: ' + '"' + grade + '"' + ' }' + ', ')
+                for female in states['Gender']:
+                        femaleMath += Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Female']['Math'])' }' + ', ')
+                        femaleVerbal += Markup('{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Female']['Verbal'])' }' + ', ')
     return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
+
+def get_female_scores(whichState):
+    with open('school_scores.json') as sat_data:
+        satData = json.load(sat_data)
+        maleMath = ''
+        maleVerbal = ''
+        listOfStates = []
+        for states in satData:
+            if states['State']['Name'] == whichState and states['Year'] == 2015:
+                for male in states['Gender']:
+                        maleMath += Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Male']['Math'])' }' + ', ')
+                        maleVerbal += Markup('{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Male']['Verbal'])' }' + ', ')
+    return[dataMath.rstrip(', '), dataVerbal.rstrip(', ')]
+
 #start of code for academics&GPA  
 @app.route("/academics&GPA")
 def render_academics_and_GPA():
