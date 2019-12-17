@@ -24,7 +24,7 @@ def render_family_income_reply():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
         incomeScores = get_income_scores(request.args['states'])
-    return render_template('familyIncome.html', mathScore = incomeScores[0], verbalScore = incomeScore[1], state = get_states_reply(request.args['states']), stateName = request.args['states'])
+    return render_template('familyIncome.html', mathScore = incomeScores[0], verbalScore = incomeScores[1], state = get_states_reply(request.args['states']), stateName = request.args['states'])
 
 def get_income_scores(whichState):
     with open('school_scores.json') as sat_data:
