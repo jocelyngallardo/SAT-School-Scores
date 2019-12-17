@@ -11,11 +11,11 @@ def render_main():
         print(get_states)
     return render_template('home.html')
     
-@app.route("/stateDemographics")
-def render_state_dempgraphics():
+@app.route("/familyIncome")
+def render_family_income():
     with open('school_scores.json') as sat_data:
         satData = json.load(sat_data)
-    return render_template('stateDemographics.html')
+    return render_template('familyIncome.html')
     
 @app.route("/gender")
 def render_gender():
