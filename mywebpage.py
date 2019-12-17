@@ -40,10 +40,10 @@ def get_gender_scores(whichState):
         for states in satData:
             if states['State']['Name'] == whichState and states['Year'] == 2015:
                 for score in states['Gender']:
-                        female = Markup('{ label: ' + '"' + 'Female' + '"' + ', y: ' + str(states['Gender']['Female']['Math']) + ' }' + ', ' + 
-                                '{ label: ' + '"' + 'Female' + '"' + ', y: ' + str(states['Gender']['Female']['Verbal']) + ' }')
-                        male = Markup('{ label: ' + '"' + 'Male' + '"' + ', y: ' + str(states['Gender']['Male']['Math']) + ' }' + ', ' + 
-                               '{ label: ' + '"' + 'Male' + '"' + ', y: ' + str(states['Gender']['Male']['Verbal']) + ' }')
+                        female = Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Female']['Math']) + ' }' + ', ' + 
+                                '{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Female']['Verbal']) + ' }')
+                        male = Markup('{ label: ' + '"' + 'Math' + '"' + ', y: ' + str(states['Gender']['Male']['Math']) + ' }' + ', ' + 
+                               '{ label: ' + '"' + 'Verbal' + '"' + ', y: ' + str(states['Gender']['Male']['Verbal']) + ' }')
     return[female, male]
 
 '''    
